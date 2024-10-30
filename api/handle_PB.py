@@ -38,7 +38,7 @@ def ensure_pocketbase_running(app: any, max_retries: int = 10) -> None:
                         break
                 except requests.ConnectionError:
                     app.logger.info("PocketBase is still starting up...")
-                    time.sleep(10)  # Wait 5 seconds before retrying
+                    time.sleep(10)  # Wait 10 seconds before retrying
             else:
                 app.logger.error(
                     "PocketBase failed to start within the expected time.")

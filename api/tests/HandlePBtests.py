@@ -18,7 +18,6 @@ class TestPocketBaseManagement(unittest.TestCase):
     def setUp(self):
         # Reset the global variable before each test
         handle_PB.pocketbase_process = None
-        # Create a mock Flask app with a logger
         self.app = Flask(__name__)
         logs_path = os.path.abspath('logs.txt')
         if not os.path.exists(logs_path):

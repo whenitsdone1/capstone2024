@@ -112,7 +112,7 @@ class Metric_Tests(unittest.TestCase):
 
     class TestGeminiIntegration(unittest.TestCase):
         def setUp(self):
-            # Set up environment
+
             self.base_url = os.getenv('POCKETBASE_URL')
             self.app = app.test_client()
             self.ctx = app.app_context()
@@ -128,7 +128,7 @@ class Metric_Tests(unittest.TestCase):
             if not self.admin_password:
                 raise ValueError(
                     "POCKETBASE_ADMIN_PASSWORD environment variable is not set")
-            # Authenticate to get admin token
+
             auth_data = {
                 "identity": self.admin_email,
                 "password": self.admin_password
@@ -139,7 +139,7 @@ class Metric_Tests(unittest.TestCase):
             self.admin_token = auth_response.json()["token"]
             admin_token = self.admin_token
 
-            # Set up headers
+
             self.headers = {
                 "Content-Type": "application/json",
                 "Authorization": authenticate(),

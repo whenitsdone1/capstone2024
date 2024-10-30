@@ -22,7 +22,6 @@ def determine_form(term_start_date: Optional[date] = None, semesters=False) -> O
         term_start_date = term_start_date.date()
         # Clean the term_start_date string if it contains extra time information
     try:
-        # Use regex to remove time components if present (e.g., "00:00:00.000Z")
         clean_date_str = re.sub(r"T.*", "", term_start_date) if 'T' in str(term_start_date) else str(term_start_date)
         clean_date_str = str(clean_date_str).split(' ')[0]  # Remove any trailing space-time portion
         # Parse the cleaned date string

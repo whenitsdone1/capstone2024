@@ -23,8 +23,6 @@ class TestMailSending(unittest.TestCase):
         self.app = app.test_client()
         self.ctx = app.app_context()
         self.ctx.push()
-
-        # Load environment variables
         self.base_url = os.getenv('POCKETBASE_URL')
         if not self.base_url:
             raise ValueError("POCKETBASE_URL environment variable is not set")
@@ -39,7 +37,7 @@ class TestMailSending(unittest.TestCase):
             raise ValueError(
                 "POCKETBASE_ADMIN_PASSWORD environment variable is not set")
 
-        # Authenticate with PocketBase
+
         auth_data = {
             "identity": self.admin_email,
             "password": self.admin_password
@@ -50,14 +48,13 @@ class TestMailSending(unittest.TestCase):
         auth_response.raise_for_status()
         self.admin_token = auth_response.json()["token"]
 
-        # Set up headers for requests
+      
         self.headers = {
             "Content-Type": "application/json",
             "Authorization": self.admin_token
         }
 
-        # Prepare a test form submission
-        # Replace or use an env variable
+
         self.test_email = os.getenv('TEST_EMAIL')
         self.term_start_date = get_AEST_date() - timedelta(days=10)  # Within Milestone 2
 
@@ -106,12 +103,12 @@ class TestMailSending(unittest.TestCase):
 
     def test_send_milestone_email(self):
         """Test the actual sending of an email."""
-        # Authenticate and create a service object
+
         creds = authenticate_gmail()
         service = build('gmail', 'v1', credentials=creds)
 
-        # Define test email details
-        sender = self.test_email  # Replace with your Gmail address
+       
+        sender = self.test_email
         subject = "Reporting For Milestone 1"
         body = """
 <!DOCTYPE html>

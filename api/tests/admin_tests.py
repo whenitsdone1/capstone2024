@@ -66,7 +66,6 @@ class AdminBlueprintTests(unittest.TestCase):
 
     def test_admin_get_specific_record(self):
         """Test fetching a specific record by ID."""
-        # Create a test record first
         term_start_date = get_AEST_date() - timedelta(days=10)
         milestone = determine_form(term_start_date)
         collection_name = f"{milestone}"
@@ -109,17 +108,16 @@ class AdminBlueprintTests(unittest.TestCase):
         self.assertIn(response.status_code, [200, 201])
         record = json.loads(response.data)
         id = record.get("record_id")
-        # Fetch the record via the admin route
+
         response = self.app.get(f'/admin/records/{id}', headers=self.headers)
         self.assertEqual(response.status_code, 200)
 
-        # Verify the data in the record
+
         record_data = json.loads(response.data)
         self.assertIn('id', record_data)
         self.assertIn('email', record_data)
         self.assertEqual(record_data['id'], id)
 
-        # Clean up: delete the created record
         delete_response = requests.delete(
             f"{self.base_url}/api/collections/{collection_name}/records/{id}",  
             headers={"Authorization": f"{self.admin_token}"}
@@ -133,7 +131,7 @@ class AdminBlueprintTests(unittest.TestCase):
             f'/admin/records/{non_existent_record_id}', headers=self.headers)
         self.assertEqual(response.status_code, 404)
 
-        # Verify that the error message is returned
+        # Verify err
         error_data = json.loads(response.data)
         self.assertIn('error', error_data)
         self.assertEqual(error_data['error'], 'Record not found')

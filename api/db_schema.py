@@ -1,6 +1,6 @@
 
 
-#Schema for each milestone in the database - note that the current implementation handles terms insteads of semesters.
+#Schema for each milestone in the database
 SCHEMAS = { 
   "Milestone_1": [   #Milestone 1
     {
@@ -16,7 +16,7 @@ SCHEMAS = {
       "description": "The start date of the teaching period"
     },
     {
-      "name": "completion_time", #this should be autofilled
+      "name": "completion_time",
       "type": "date",
       "required": False,
       "unique": False,

@@ -771,18 +771,18 @@ FORM_TEMPLATE = """
             const backButton = document.getElementById('back-button');
             const milestoneSelect = document.getElementById('milestone-select');
             
-            // Reset form and clear fields
+      
             form.reset();
             formFieldsDiv.innerHTML = '';
             
-            // Reset milestone select
+
             milestoneSelect.value = '';
             
-            // Show file upload section and hide back button
+      
             fileUploadSection.classList.remove('hidden');
             backButton.style.display = 'none';
             
-            // Reset file upload section
+    
             const fileInput = document.getElementById('spreadsheet-upload');
             if (fileInput) {
                 fileInput.value = '';
@@ -863,9 +863,8 @@ def milestone_form():
     return render_template_string(FORM_TEMPLATE, schemas=SCHEMAS, pocketbase_url=pocketbase_url)
 
 @home.route('/api/get_auth_token', methods=['GET'])
-def get_auth_token():
+def get_auth_token(): # Host auth token
     try:
-        # Get the auth token using the Python function
         auth_token = authenticate()
         if not auth_token:
             return jsonify({'error': 'Failed to authenticate.'}), 401
