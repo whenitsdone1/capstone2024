@@ -1,4 +1,4 @@
-# Flask utility using a PocketBase backend for managing submissions of quality assurance forms for the La Trobe Computer Science and Information Technology Department.
+Flask utility using a PocketBase backend for managing submissions of quality assurance forms for the La Trobe Computer Science and Information Technology Department.
 
 # Running the application
 
@@ -26,11 +26,17 @@ Upon first downloading and starting PocketBase, you will need to make a admin ac
 You will need a secrets.env file (one with the tests directory AND one within the parent directory), with the following entries:
 
 `POCKETBASE_URL="THE URL FOR YOUR POCKETBASE INSTANCE"`
+
 `POCKETBASE_ADMIN_EMAIL="YOUR ADMIN EMAIL"`
+
 `POCKETBASE_ADMIN_PASSWORD=YOUR ADMIN PASSWORD`
+
 `FLASK_ENV="THIS SHOULD LIKELY BE 'production' IF YOU DON'T KNOW WHAT THIS IS"`
+
 `GOOGLE_API_KEY="YOUR GEMINI API KEY"`
+
 `TEST_EMAIL="THE ADDRESS YOU WANT TEST EMAILS SENT TO"`
+
 
 # Gmail API
 
