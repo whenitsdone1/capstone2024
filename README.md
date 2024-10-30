@@ -6,6 +6,14 @@
 
 # PocketBase
 
+Upon first downloading and starting PocketBase, you will need to make a admin account - you will use some of those details in your `secrets.env` file. Other than that, all databases and related operations are handled with through the application.
+
+You must launch PocketBase *independently* of the Flask application the first time in order to make your admin acccount.
+
+You can do this:
+
+`./pocketbase serve` in the project root.
+
 PocketBase should be automatically started and ended with the flask application - see `handle_PB.py` for implementation.
 However, if you neeed to start PocketBase yourself you can do so with:
 
@@ -19,7 +27,7 @@ For example, on the development setup:
 
 If you need to end the PocketBase process yourself, you can get the PID from the log files.
 
-Upon first downloading and starting PocketBase, you will need to make a admin account - you will use some of those details in your `secrets.env` file. Other than that, all databases and related operations are handled with through the application.
+
 
 # secrets.env
 
