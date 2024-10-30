@@ -1,4 +1,5 @@
-# Flask utility using a PocketBase backend for managing submissions of quality assurance forms for the La Trobe Computer Science and Information Technology Department.
+Flask utility using a PocketBase backend for managing submissions of quality assurance forms for the La Trobe Computer Science and Information Technology Department.
+
 
 # Running the application
 
@@ -10,12 +11,12 @@ Upon first downloading and starting PocketBase, you will need to make a admin ac
 
 You must launch PocketBase *independently* of the Flask application the first time in order to make your admin acccount.
 
-You can do this:
+You can do this with:
 
 `./pocketbase serve` in the project root.
 
-PocketBase should be automatically started and ended with the flask application - see `handle_PB.py` for implementation.
-However, if you neeed to start PocketBase yourself you can do so with:
+PocketBase should then be automatically started and ended with the Flask application - see `handle_PB.py` for implementation.
+However, if you neeed to start PocketBase yourself after this, you can do so with:
 
 `./pocketbase serve --dir <your_directory>` 
 
@@ -27,18 +28,24 @@ For example, on the development setup:
 
 If you need to end the PocketBase process yourself, you can get the PID from the log files.
 
-
+`kill PID`
 
 # secrets.env
 
-You will need a secrets.env file (one with the tests directory AND one within the parent directory), with the following entries:
+You will need a secrets.env file (one within the tests directory AND one within the parent directory), with the following entries:
 
-`POCKETBASE_URL="THE URL FOR YOUR POCKETBASE INSTANCE"`
+`POCKETBASE_URL="THE URL OF YOUR POCKETBASE INSTANCE"`
+
 `POCKETBASE_ADMIN_EMAIL="YOUR ADMIN EMAIL"`
+
 `POCKETBASE_ADMIN_PASSWORD=YOUR ADMIN PASSWORD`
+
 `FLASK_ENV="THIS SHOULD LIKELY BE 'production' IF YOU DON'T KNOW WHAT THIS IS"`
+
 `GOOGLE_API_KEY="YOUR GEMINI API KEY"`
+
 `TEST_EMAIL="THE ADDRESS YOU WANT TEST EMAILS SENT TO"`
+
 
 # Gmail API
 
@@ -60,4 +67,6 @@ https://ai.google.dev/
 
 To install the projects required modules:
 
+
 `python install_dependencies.py`
+
