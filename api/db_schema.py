@@ -2,7 +2,7 @@
 
 #Schema for each milestone in the database
 SCHEMAS = { 
-  "Milestone_1": [   #Milestone 1
+  "Milestone_1": [   
     {
     "name": "term_start_date",
       "type": "date",

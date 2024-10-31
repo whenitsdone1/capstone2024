@@ -797,61 +797,6 @@ FORM_TEMPLATE = """
         function resetForm() {
             resetToInitialState();  // Use the same function for consistency
         }
-
-        document.getElementById('milestone-form').addEventListener('submit', async function (event) {
-            event.preventDefault();
-
-     
-            const jsonData = {};
-            
-      
-            jsonData.milestone = document.getElementById('milestone-select').value;
-            jsonData.academic_period = document.getElementById('academic-period').value;
-
-
-            const formElements = event.target.elements;
-            
-            for (let element of formElements) {
-                if (element.type === 'checkbox') {
-                    // For checkboxes, explicitly set boolean value
-                    jsonData[element.name] = element.checked;
-                } else if (element.name && element.type !== 'submit') {
-                    // For other inputs, use their value
-                    jsonData[element.name] = element.value;
-                }
-            }
-
-            try {
-                const tokenResponse = await fetch('/api/get_auth_token');
-                if (!tokenResponse.ok) {
-                    throw new Error('Failed to authenticate.');
-                }
-                const { auth_token } = await tokenResponse.json();
-
-                const pocketbaseUrl = "{{ pocketbase_url }}/api/collections/" + jsonData.milestone + "/records";
-
-                const response = await fetch(pocketbaseUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': auth_token
-                    },
-                    body: JSON.stringify(jsonData)
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    showPopup('Form submitted successfully!', false);
-                    resetToInitialState();  
-                } else {
-                    showPopup(data.error || 'There was an error submitting the form.', true);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                showPopup('There was an error submitting the form.', true);
-            }
-        });
     </script>
 </body>
 </html>
