@@ -4,7 +4,7 @@ import os
 
 home = Blueprint('home', __name__)  # Define a blueprint for the index or 'homepage' of the application
 
-SCHEMAS = {
+SCHEMAS = { # Schema for displaying summary data - less detailed than the actual schemas
     "Milestone_1": [
         {
             "name": "term_start_date",
@@ -343,6 +343,7 @@ SCHEMAS = {
     ]
 }
 
+# JS and HTML + CSS for rendering main view
 FORM_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="en">
